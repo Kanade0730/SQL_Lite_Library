@@ -28,3 +28,13 @@ class SQL_Lib:
         rows = cursor.fetchall()
         cursor.close()
         return rows
+
+    def Creat_Table(self,DBHandle,Str_TableName):
+        cursor = DBHandle.execute(f"CREATE TABLE IF NOT EXISTS {Str_TableName}(ID INTEGER PRIMARY KEY AUTOINCREMENT)")
+        cursor.close()
+
+    def Creat_Column_Not_NULL(self,DBHandle,Str_Table_Name,Str_ColumnName):
+        cursor = DBHandle.execute(f"ALTER TABLE {Str_Table_Name} ADD COLUMN {Str_ColumnName} TEXT NOT NULL")
+        cursor.close()
+
+
